@@ -1,5 +1,5 @@
 name: "keycloak"
-version: "v0000"
+version: "v00000"
 author: "JD4321"
 displayName: "Keycloak"
 iconUrl: "https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp"
@@ -24,7 +24,7 @@ configSchema:
       description: "PostgreSQL database username"
       default: "keycloak"
     REALM_CONFIG:
-      type: string
+      type: object
       description: "Optional: A full JSON string representing a Keycloak Realm configuration to be imported on startup."
   required:
     - ADMIN_USERNAME
