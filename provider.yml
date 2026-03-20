@@ -10,7 +10,7 @@ description: |
 backend:
   landscape:
     gitUrl: "https://github.com/codesphere-cloud/Keycloak-provider"
-    ciProfile: "keycloak"
+    ciProfile: "__ci_default__"
 
 configSchema:
   type: object
