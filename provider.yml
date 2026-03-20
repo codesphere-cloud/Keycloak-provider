@@ -2,7 +2,7 @@ name: keycloak
 version: v1
 author: Your Team
 displayName: Keycloak IAM
-iconUrl: https://github.com/codesphere-cloud/Keycloak-provider/blob/main/assets/Keycloak.webp
+iconUrl: https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp
 category: security
 description: |
   Open Source Identity and Access Management.
@@ -44,3 +44,6 @@ detailsSchema:
       type: string
     port:
       type: integer
+
+config:
+  a: b
