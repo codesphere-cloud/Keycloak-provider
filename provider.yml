@@ -1,5 +1,5 @@
 name: "keycloak"
-version: "v1"
+version: "v2"
 author: "JD"
 displayName: "Keycloak IAM"
 iconUrl: "https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp"
@@ -23,8 +23,9 @@ configSchema:
       type: string
       description: "PostgreSQL database username"
       default: "keycloak"
+    # convert it to object when the bug is fixed
     REALM_CONFIG:
-      type: object
+      type: string
       description: "Optional: A full JSON object representing a Keycloak Realm configuration to be imported on startup."
       additionalProperties: true
   required:
