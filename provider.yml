@@ -6,11 +6,11 @@ iconUrl: "https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/m
 category: "security"
 description: |
   Open Source Identity and Access Management.
-  This provider provisions a production-ready Keycloak instance backed by PostgreSQL.
 
 backend:
   landscape:
-    ciProfile: "__cs_default__"
+    gitUrl: "https://github.com/codesphere-cloud/Keycloak-provider"
+    ciProfile: "keycloak"
 
 configSchema:
   type: object
@@ -52,9 +52,3 @@ detailsSchema:
     port:
       type: integer
   additionalProperties: false
-
-plans:
-  - id: 0
-    name: "Default"
-    description: "Default Plan"
-    parameters: {}
