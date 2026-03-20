@@ -7,6 +7,8 @@ prepare:
       command: ./scripts/nix-deps.sh
     - name: Run The Installation Script
       command: ./scripts/install.sh
+    - name: create import dir (for relams)
+      command: mkdir -p ./keycloak-$(cat ./config/KEYCLOAK_VERSION)/data/import
 test:
   steps: []
 run:
@@ -23,8 +25,8 @@ run:
     config:
       version: "17.6"
     secrets:
-      userPassword: ${{ vault.kcPgPw }}
-      superuserPassword: ${{ vault.kcPgPw }}
+      userPassword: ${{ vault.DB_PASSWORD }}
+      superuserPassword: ${{ vault.DB_PASSWORD }}
   keycloak:
     steps:
       - name: Start Keycloak
@@ -40,10 +42,8 @@ run:
           path: /
           stripPath: false
     env:
-      PG_USER: app
-      PG_PASSWORD: ${{ vault['kcPgPw'] }}
-      PG_JDBC_STRING: jdbc:postgresql://ms-postgres-v1-${{ team.id }}-landscape-${{
-        workspace.id }}-kcPg.ms-postgres:5432/app?user=app&password=${{
-        vault['kcPgPw'] }}
-      KC_BOOTSTRAP_ADMIN_PASSWORD: ${{ vault['kcAdminPw'] }}
-      KC_BOOTSTRAP_ADMIN_USERNAME: superadmin
+      PG_USER: ${{ workspace.env['DB_USER'] }}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${{ workspace.env['ADMIN_USERNAME'] }}
+      PG_PASSWORD: ${{ vault.DB_PASSWORD }}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${{ vault.ADMIN_PASSWORD }}
+      PG_JDBC_STRING: jdbc:postgresql://ms-postgres-v1-${{ team.id }}-landscape-${{ workspace.id }}-kcPg.ms-postgres:5432/app
