@@ -1,21 +1,8 @@
-![Keycloak Logo](./assets/Keycloak.webp)
+<img src="./assets/Keycloak.webp" alt="Keycloak Logo" width="300" />
 
 # Keycloak Provider for Codesphere
 
 This repository provides the configuration and deployment scripts to run Keycloak as a native provider on Codesphere. The deployment is configured for a production environment, utilizing a PostgreSQL database backend and Codesphere's Vault for secure secret management.
-
-## Directory Structure
-
-The repository is structured to separate configuration, CI/CD pipelines, and runtime scripts:
-
-* `assets/Keycloak.webp`: Visual asset for the Codesphere UI/Marketplace.
-* `ci.keycloak.yml`: CI/CD pipeline definition orchestrating the setup and startup processes.
-* `config/KEYCLOAK_VERSION`: A text file containing the target Keycloak version (e.g., 26.5.6) to ensure reproducible builds.
-* `provider.yaml`: Metadata definition for the Codesphere provider integration.
-* `scripts/`: Contains the executable shell scripts for the deployment lifecycle:
-  * `nix-deps.sh`: Resolves required OS-level dependencies via Nix.
-  * `install.sh`: Downloads and extracts the Keycloak binaries based on the version specified in the config.
-  * `start.sh`: Executes the initial admin bootstrap process and starts the Keycloak server.
 
 ## Prerequisites
 
