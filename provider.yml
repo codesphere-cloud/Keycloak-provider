@@ -57,9 +57,3 @@ detailsSchema:
     port:
       type: integer
   additionalProperties: false
-
-plans:
-  - id: 0
-    name: "Default"
-    description: "Default Plan"
-    parameters: {}
