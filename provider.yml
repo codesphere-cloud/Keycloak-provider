@@ -1,6 +1,6 @@
 name: "keycloak"
-version: "v3"
-author: "JD"
+version: "v4"
+author: "JD4"
 displayName: "Keycloak IAM"
 iconUrl: "https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp"
 category: "security"
@@ -57,3 +57,9 @@ detailsSchema:
     port:
       type: integer
   additionalProperties: false
+
+plans:
+  - id: 0
+    name: "Default"
+    description: "Default Plan"
+    parameters: {}
