@@ -10,6 +10,7 @@ description: |
 
 backend:
   landscape:
+    gitUrl: "https://github.com/codesphere-cloud/Keycloak-provider"
     ciProfile: "keycloak"
 
 configSchema:
@@ -23,9 +24,8 @@ configSchema:
       type: string
       description: "PostgreSQL database username"
       default: "keycloak"
-    # convert it to object when the bug is fixed
     REALM_CONFIG:
-      type: string
+      type: object
       description: "Optional: A full JSON object representing a Keycloak Realm configuration to be imported on startup."
       additionalProperties: true
   required:
