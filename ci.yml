@@ -1,0 +1,51 @@
+schemaVersion: v0.2
+prepare:
+  steps:
+    - name: Give Appropriate Permissions To The Install Script
+      command: chmod -R +x ./scripts/
+    - name: Install Nix dependencies
+      command: ./scripts/nix-deps.sh
+    - name: Run The Installation Script
+      command: ./scripts/install.sh
+    - name: create import dir (for relams)
+      command: mkdir -p ./keycloak-$(cat ./config/KEYCLOAK_VERSION)/data/import
+test:
+  steps: []
+run:
+  kcPg:
+    provider:
+      name: postgres
+      version: v1
+    plan:
+      id: 0
+      parameters:
+        cpu: 1
+        memory: 500
+        storage: 1024
+    config:
+      version: "17.6"
+    secrets:
+      userPassword: ${{ vault.DB_PASSWORD }}
+      superuserPassword: ${{ vault.DB_PASSWORD }}
+  keycloak:
+    steps:
+      - name: Start Keycloak
+        command: "./scripts/start.sh "
+    plan: 201
+    replicas: 1
+    network:
+      ports:
+        - port: 3000
+          isPublic: false
+      paths:
+        - port: 3000
+          path: /
+          stripPath: false
+    env:
+      PG_USER: ${{ workspace.env['DB_USER'] }}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${{ workspace.env['ADMIN_USERNAME'] }}
+      PG_PASSWORD: ${{ vault.DB_PASSWORD }}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${{ vault.ADMIN_PASSWORD }}
+      PG_JDBC_STRING: jdbc:postgresql://ms-postgres-v1-${{ team.id }}-landscape-${{
+        workspace.id }}-kcPg.ms-postgres:5432/app
+      REALM_CONFIG: ${{ workspace.env['REALM_CONFIG'] }}
