@@ -1,6 +1,6 @@
 name: "keycloak"
-version: "v00"
-author: "JD43"
+version: "v000"
+author: "JD432"
 displayName: "Keycloak"
 iconUrl: "https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp"
 category: "security"
@@ -10,8 +10,7 @@ description: |
 
 backend:
   landscape:
-    gitUrl: "https://github.com/codesphere-cloud/Keycloak-provider"
-    ciProfile: "keycloak"
+    ciProfile: "__cs_default__"
 
 configSchema:
   type: object
