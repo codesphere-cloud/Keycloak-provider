@@ -47,3 +47,4 @@ run:
       PG_PASSWORD: ${{ vault.DB_PASSWORD }}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${{ vault.ADMIN_PASSWORD }}
       PG_JDBC_STRING: jdbc:postgresql://ms-postgres-v1-${{ team.id }}-landscape-${{ workspace.id }}-kcPg.ms-postgres:5432/app
+      REALM_CONFIG: ${{ workspace.env['REALM_CONFIG'] }}
