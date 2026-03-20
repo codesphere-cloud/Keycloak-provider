@@ -1,5 +1,5 @@
 name: "keycloak"
-version: "v0.1.0"
+version: "v0-test"
 author: "JD43"
 displayName: "Keycloak IAM"
 iconUrl: "https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp"
