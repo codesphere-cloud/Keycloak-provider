@@ -30,7 +30,7 @@ run:
   keycloak:
     steps:
       - name: Start Keycloak
-        command: ./scripts/start.sh
+        command: "./scripts/start.sh "
     plan: 201
     replicas: 1
     network:
@@ -46,5 +46,6 @@ run:
       KC_BOOTSTRAP_ADMIN_USERNAME: ${{ workspace.env['ADMIN_USERNAME'] }}
       PG_PASSWORD: ${{ vault.DB_PASSWORD }}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${{ vault.ADMIN_PASSWORD }}
-      PG_JDBC_STRING: jdbc:postgresql://ms-postgres-v1-${{ team.id }}-landscape-${{ workspace.id }}-kcPg.ms-postgres:5432/app
+      PG_JDBC_STRING: jdbc:postgresql://ms-postgres-v1-${{ team.id }}-landscape-${{
+        workspace.id }}-kcPg.ms-postgres:5432/app
       REALM_CONFIG: ${{ workspace.env['REALM_CONFIG'] }}

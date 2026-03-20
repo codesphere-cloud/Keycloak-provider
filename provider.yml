@@ -24,10 +24,6 @@ configSchema:
       type: string
       description: "PostgreSQL database username"
       default: "keycloak"
-    REALM_CONFIG:
-      type: object
-      description: "Optional: A full JSON object representing a Keycloak Realm configuration to be imported on startup."
-      additionalProperties: true
   required:
     - ADMIN_USERNAME
     - DB_USER
