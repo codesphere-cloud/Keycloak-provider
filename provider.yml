@@ -1,29 +1,32 @@
-name: keycloak
-version: v1
-author: Your Team
-displayName: Keycloak IAM
-iconUrl: https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp
-category: security
+name: "keycloak"
+version: "v0"
+author: "JD"
+displayName: "Keycloak IAM"
+iconUrl: "https://raw.githubusercontent.com/codesphere-cloud/Keycloak-provider/main/assets/Keycloak.webp"
+category: "security"
 description: |
   Open Source Identity and Access Management.
   This provider provisions a production-ready Keycloak instance backed by PostgreSQL.
 
 backend:
   landscape:
-    gitUrl: https://github.com/codesphere-cloud/Keycloak-provider
-    ciProfile: keycloak
+    ciProfile: "keycloak"
 
 configSchema:
   type: object
   properties:
     ADMIN_USERNAME:
       type: string
-      description: Username for the initial Keycloak administrator
-      default: admin
+      description: "Username for the initial Keycloak administrator"
+      default: "admin"
     DB_USER:
       type: string
-      description: PostgreSQL database username
-      default: keycloak
+      description: "PostgreSQL database username"
+      default: "keycloak"
+  required:
+    - ADMIN_USERNAME
+    - DB_USER
+  additionalProperties: false
 
 secretsSchema:
   type: object
@@ -31,11 +34,15 @@ secretsSchema:
     ADMIN_PASSWORD:
       type: string
       format: password
-      description: Password for the Keycloak administrator
+      description: "Password for the Keycloak administrator"
     DB_PASSWORD:
       type: string
       format: password
-      description: Password for the PostgreSQL database
+      description: "Password for the PostgreSQL database"
+  required:
+    - ADMIN_PASSWORD
+    - DB_PASSWORD
+  additionalProperties: false
 
 detailsSchema:
   type: object
@@ -44,6 +51,10 @@ detailsSchema:
       type: string
     port:
       type: integer
+  additionalProperties: false
 
-config:
-  a: b
+plans:
+  - id: 0
+    name: "Default"
+    description: "Default Plan"
+    parameters: {}
